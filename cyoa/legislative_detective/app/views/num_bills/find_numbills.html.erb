@@ -1,0 +1,20 @@
+<%= render 'logo' %>
+<%congressman_name = @num_of_bills.keys[0]%>
+<%num_bills = @num_of_bills.values[0]%>
+<ul class="nav nav-pills nav-justified">
+  <li ><a  href="/findCommittee?id=<%=@id%>&name=<%=@name%>"> commitees your congressman belongs to</a></li>
+  <li > <a  href="/findBills?id=<%=@id%>&name=<%=@name%>">bills they have sponsored</a></li>
+  <li ><a href="/displaysearchbill?id=<%=@id%>&name=<%=@name%>">search bills by tags</a></li>
+  <li class><a href="/findcontribution?id=<%=@id%>&name=<%=@name%>">campaign contributors</a></li>
+  <li class="active" > <a  href="/findnumBills?id=<%=@id%>&name=<%=@name%>">Hardest Working Congressman</a></li>
+  <li> <a href="/displayfeed?id=<%=@id%>&name=<%=@name%>">json Feeds</a></li>
+
+
+</ul>
+<div class="tab-content" >
+  <table class= "table-content" cellpadding="10px" align="center">
+    <H3><%=congressman_name%> is the hardest working congressman. He has sponsored <%=num_bills%> bills. </H3>
+  </table>
+  <br>
+
+</div>

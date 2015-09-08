@@ -1,0 +1,35 @@
+
+<%= render 'logo' %>
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a data-toggle="tab" href="#congressman">Pick a congressman to investigate</a></li>
+
+</ul>
+
+<div class="tab-content" >
+  <%counter = 0%>
+  <table class= "table-content" cellpadding="10px">
+    <%session["id"] = "" %>
+    <% @congressman["results"].each do |item|%>  
+      <%counter = counter + 1%>
+      <% @sex = 'He' if item ["gender"] == "M" %>
+      <% @sex = 'She' if item ["gender"] == "W" %>
+      <% @sexposs = 'His' if item ["gender"] == "M" %>
+      <% @sexposs = 'Her' if item ["gender"] == "W" %>
+      <%if session["id"] == "" %>
+      <% session["id"] = item ["bioguide_id"] %>
+        <%else %>
+      <%session["id"] =  session["id"] + "|" + item["bioguide_id"] %>
+        <%end%>
+      <% @name = item ["first_name"] + " " + item["last_name"]%>
+      <tr><td><a href="/findCommittee?id=<%=item ["bioguide_id"]%>&name=<%=@name%>" style="border:3px solid red"><img src="https://graph.facebook.com/<%=item ["facebook_id"]%>/picture?type=normal"></a></td><td style="vertical-align: top;"><%=item ["title"]%>.&nbsp;<%=item ["first_name"]%>&nbsp;<%=item ["last_name"]%> is a <%=item ["state_rank"]%>
+      legislator whose term started in <%=item ["term_start"]%> and ends <%=item ["term_end"]%>. <%=@sex%> is a member of the <% if item["party"] == "R"%>republican party<%end%> <% if item["party"] == "D"%>democratic party<%end%> <%=@sexposs%> office is in the <%=item ["office"]%> and number is <%=item ["phone"]%>.
+        <%=@sexposs%> website is <a href="<%=item ["website"]%>"><%=item ["website"]%></a> and the contact form is <a href="<%=item ["contact_form"]%>"><%=item ["contact_form"]%></a>
+      </td> </tr> 
+  <%end %>
+  </table>
+   <br>
+
+</div>
+
+
+

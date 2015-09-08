@@ -1,0 +1,50 @@
+
+<%= render 'logo' %>
+<ul class="nav nav-pills nav-justified">
+  <li ><a  href="/findCommittee?id=<%=@id%>&name=<%=@name%>"> commitees your congressman belongs to</a></li>
+  <li class = "active"> <a href="/findBills?id=<%=@id%>&name=<%=@name%>">bills they have sponsored</a></li>
+  <li><a href="/displaysearchbill?id=<%=@id%>&name=<%=@name%>">search bills by tags</a></li>
+  <li><a href="/findcontribution?id=<%=@id%>&name=<%=@name%>">campaign contributors</a></li>
+  <li> <a  href="/findnumBills?id=<%=@id%>&name=<%=@name%>">Hardest Working Congressman</a></li>
+  <li> <a href="/displayfeed?id=<%=@id%>&name=<%=@name%>">json Feeds</a></li>
+</ul>
+
+
+<div class="tab-content" >
+  <%counter = 0%>
+  <table class= "table-content" cellpadding="10px">
+    <% @bill["results"].each do |item|%>  
+      <%counter = counter + 1%>
+      <tr><td><%=counter%>.&nbsp;Description: <%=item["official_title"]%></td></tr>
+      <tr><td>Date Bill Introduced: <%=item["introduced_on"]%></td></tr>
+      <tr><td>Date Issued: <%=item["last_version"]["issued_on"]%></td></tr>
+      <tr><td>Chamber: <%=item["chamber"]%></td></tr>
+      <tr><td><form action="/tagbill" method="POST">
+
+      <input type="hidden" value="<%=item["official_title"]%>" name="title">
+      <input type="hidden" value="<%=item["introduced_on"]%>" name="introduced_on">
+        <input type="hidden" value=<%=item["last_version"]["issued_on"]%> name="date_issued">
+        <input type="hidden" value=<%=item["chamber"]%> name="chamber">
+        <input type="hidden" value="<%=@name%>" name="name">
+        <input type="hidden" value="<%=@id%>" name="id">
+        <%
+           tags_appear = ''
+           unless @taggbills.nil?
+           @taggbills.each do |p|
+             if p.bill_desc == item["official_title"]
+              tags_appear = p.tags
+              break
+             end
+             end
+        end %>
+       <%if tags_appear.empty?%>
+        <input type="text" value ="Tags separated with comma" size="35" name="tags">
+          <input type="submit" value="Tag">
+        <%else%>
+          <div style="background-color:#CCCCFF;width:220px" class = "tags" >Tags: <%=tags_appear%></div>
+       <%end%>
+        <%= token_tag nil %>
+      </form></td></tr>
+    <%end%>
+   </table>
+</div>

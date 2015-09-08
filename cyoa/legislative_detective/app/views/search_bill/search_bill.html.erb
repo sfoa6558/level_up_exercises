@@ -1,0 +1,21 @@
+<%= render 'logo' %>
+<%=@search_results%>
+<ul class="nav nav-pills nav-justified">
+  <li ><a  href="/findCommittee?id=<%=@id%>&name=<%=@name%>"> commitees your congressman belongs to</a></li>
+  <li > <a  href="/findBills?id=<%=@id%>&name=<%=@name%>">bills they have sponsored</a></li>
+  <li class = "active"><a href="/displaysearchbill?id=<%=@id%>&name=<%=@name%>">search bills by tags</a></li>
+  <li><a href="/findcontribution?id=<%=@id%>&name=<%=@name%>">campaign contributors</a></li>
+  <li > <a  href="/findnumBills?id=<%=@id%>&name=<%=@name%>">Hardest Working Congressman</a></li>
+  <li> <a href="/displayfeed?id=<%=@id%>&name=<%=@name%>">json Feeds</a></li>
+
+</ul>
+<div class="tab-content-search" align="center">
+  <div id="searchbill" class="tab-pane fade in active">
+    <form name=zip action="/searchBill" method="GET">
+      Enter a tag:
+      <input type="text" name="searchbill" size="45">
+      &nbsp;&nbsp;<input type="submit" value="submit" size="30">
+    </form>
+  </div>
+  <%= image_tag "congress.jpg", width:"490", height:"350",  :style => "position:absolute;top:125px;left:398px;"%>
+</div>

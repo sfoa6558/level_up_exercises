@@ -1,0 +1,21 @@
+
+
+  <h2>Legislative&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spy</h2>
+  <%= image_tag "magnifying.png", width:"50", height:"50",  :style => "position:absolute;top:85px;left:582px;"%></div>
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a data-toggle="tab" href="#congressman">Find your congressman by zip code</a></li>
+
+</ul>
+
+<div class="tab-content-find" align="center">
+  <div id="congressmanzip" class="tab-pane fade in active">
+    <form name=zip action="/findCongressman" method="GET">
+      Zip Code:
+      <input type="text" name="zipcode">
+     &nbsp;&nbsp;<input type="submit" value="submit" size=""30>
+    </form>
+  </div>
+  <%= image_tag "congress.jpg", width:"490", height:"350",  :style => "position:absolute;top:125px;left:398px;"%>
+</div>
+
+

@@ -1,0 +1,24 @@
+<%= render 'logo' %>
+<ul class="nav nav-pills nav-justified">
+  <li ><a  href="/findCommittee?id=<%=@id%>&name=<%=@name%>"> commitees your congressman belongs to</a></li>
+  <li > <a  href="/findBills?id=<%=@id%>&name=<%=@name%>">bills they have sponsored</a></li>
+  <li ><a href="/displaysearchbill?id=<%=@id%>&name=<%=@name%>">search bills by tags</a></li>
+  <li class = "active"><a href="/findcontribution?id=<%=@id%>&name=<%=@name%>">campaign contributors</a></li>
+  <li > <a  href="/findnumBills?id=<%=@id%>&name=<%=@name%>">Hardest Working Congressman</a></li>
+  <li> <a href="/displayfeed?id=<%=@id%>&name=<%=@name%>">json Feeds</a></li>
+</ul>
+<div class="tab-content" >
+  <%counter = 0%>
+  <table class= "table-content" cellpadding="10px" align="center">
+    <%counter = 0%>
+    <% @campaign_contribution.each do |item|%>  
+      <%counter = counter + 1%>
+      <tr ><td><%=counter%>. <%=item ["organization_name"]%></a></td></tr>
+      <tr><td><%=item ["amount"] %></td></tr>
+      </td> </tr> 
+    <%end %>
+
+  </table>
+  <br>
+
+</div>

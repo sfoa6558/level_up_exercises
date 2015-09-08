@@ -1,0 +1,22 @@
+<%= render 'logo' %>
+<ul class="nav nav-pills nav-justified">
+  <li ><a  href="/findCommittee?id=<%=@id%>&name=<%=@name%>"> commitees your congressman belongs to</a></li>
+  <li > <a  href="/findBills?id=<%=@id%>&name=<%=@name%>">bills they have sponsored</a></li>
+  <li ><a href="/displaysearchbill?id=<%=@id%>&name=<%=@name%>">search bills by tags</a></li>
+  <li> <a href="/findcontribution?id=<%=@id%>&name=<%=@name%>">campaign contributors</a></li>
+  <li> <a  href="/findnumBills?id=<%=@id%>&name=<%=@name%>">Hardest Working Congressman</a></li>
+  <li class="active"> <a href="/displayfeed?id=<%=@id%>&name=<%=@name%>">json Feeds</a></li>
+
+
+</ul>
+
+<div class="tab-content" >
+   <h3>1.This feed will bring back congressman data by zipcode, just change the zip parameter</h3>
+   <p><a href="http://congress.api.sunlightfoundation.com/legislators/locate?zip=60611&apikey=218acf9980a749a7864ee683baf184ea">http://congress.api.sunlightfoundation.com/legislators/locate?zip=60611&apikey=218acf9980a749a7864ee683baf184ea</a></p>
+    <h3>2.This feed will bring back bill data based off of bioguide id, get the bioguide of your congressman by the first feed</h3>
+    <p><a href="http://congress.api.sunlightfoundation.com/bills?sponsor_id=K000360&apikey=218acf9980a749a7864ee683baf184ea">http://congress.api.sunlightfoundation.com/bills?sponsor_id=K000360&apikey=218acf9980a749a7864ee683baf184ea</a></p>
+    <h3>3.This feed will bring back committee data based off of bioguide id, get the bioguide of your congressman by the first feed</h3>
+    <p><a href="http://congress.api.sunlightfoundation.com/committees?member_ids=K000360&apikey=218acf9980a749a7864ee683baf184ea">http://congress.api.sunlightfoundation.com/committees?member_ids=K000360&apikey=218acf9980a749a7864ee683baf184ea</a></p>
+    <h3>4.This feed will bring back campaign data based off of the name of your congressman,the recipient.</h3>
+    <p><a href="transparencydata.com/api/1.0/contributions.json?amount=%3E%7C1000&cycle=2012&recipient_ft=Richard%20Durbin&apikey=218acf9980a749a7864ee683baf184ea">http://transparencydata.com/api/1.0/contributions.json?amount=%3E%7C1000&cycle=2012&recipient_ft=Richard%20Durbin&apikey=218acf9980a749a7864ee683baf184ea</a></p>
+</div>

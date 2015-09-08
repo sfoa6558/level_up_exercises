@@ -1,0 +1,36 @@
+
+<div class="container">
+  <h2>Legislative&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spy</h2>
+  <%= image_tag "magnifying.png", width:"50", height:"50",  :style => "position:absolute;top:85px;left:672px;"%></div>
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a data-toggle="tab" href="#congressman">Find your congressman</a></li>
+  <li><a data-toggle="tab" href="#campaigncontrib">Find his/her campaign contributors</a></li>
+  <li><a data-toggle="tab" href="#fedcon">Find federal contracts awarded</a></li>
+  <li><a data-toggle="tab" href="#fedgrant">Find federal grants awarded</a></li>
+</ul>
+
+<div class="tab-content" align="center">
+  <div id="congressman" class="tab-pane fade in active">
+   <p align="center">Find your congressman by zip code</p>
+    <form name=zip action="/findCongressman" method="GET">
+      Zip Code:
+      <input type="text" name="zipcode">
+     &nbsp;&nbsp;<input type="submit" value="submit">
+    </form>
+  </div>
+  <div id="campaigncontrib" class="tab-pane fade">
+    <h3>Menu 1</h3>
+    <p>Some content in menu 1.</p>
+  </div>
+  <div id="fedcon" class="tab-pane fade">
+    <h3>Menu 2</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+  <div id="fedgrant" class="tab-pane fade">
+    <h3>Menu 2</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+
+</div>
+
+
